@@ -1,7 +1,7 @@
 name: generate_color_palette
 description: A simple package to generate color palettes based on a primary color.
 version: 0.0.1
-homepage:
+homepage: https://github.com/hzlgnn/generate_color_palette
 
 environment:
   sdk: '>=3.1.2 <4.0.0'
