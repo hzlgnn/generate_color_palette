@@ -2,11 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+/// A service class for generating various color palettes
+/// based on a primary color.
 class ColorPaletteService {
   final Color primaryColor;
 
   ColorPaletteService(this.primaryColor);
 
+  /// Returns the complementary color for the [primaryColor].
   Color getComplementaryColor() {
     final hsl = HSLColor.fromColor(primaryColor);
     final complementaryHue = (hsl.hue + 180) % 360;
@@ -14,6 +17,7 @@ class ColorPaletteService {
     return complementaryColor;
   }
 
+  /// Generates a list of analog colors based on the [primaryColor].
   List<Color> getAnalogColors() {
     return [
       HSLColor.fromColor(primaryColor)
@@ -26,6 +30,7 @@ class ColorPaletteService {
     ];
   }
 
+  /// Generates a monochromatic color palette based on the [primaryColor].
   List<Color> getMonochromaticColors() {
     return [
       primaryColor.withOpacity(0.25),
@@ -35,6 +40,7 @@ class ColorPaletteService {
     ];
   }
 
+  /// Generates a random color palette with [count] colors.
   List<Color> getRandomPalette(int count) {
     final random = Random();
     return List.generate(
@@ -47,6 +53,7 @@ class ColorPaletteService {
             ));
   }
 
+  /// Generates a color palette by varying the saturation of the [primaryColor].
   List<Color> generateSaturationPalette() {
     final hsl = HSLColor.fromColor(primaryColor);
 
@@ -59,6 +66,7 @@ class ColorPaletteService {
     ];
   }
 
+  /// Generates a color palette by varying the hue of the [primaryColor].
   List<Color> generateHuePalette() {
     final hsl = HSLColor.fromColor(primaryColor);
 
@@ -71,6 +79,7 @@ class ColorPaletteService {
     ];
   }
 
+  /// Generates a color palette by varying the lightness of the [primaryColor].
   List<Color> generateLightnessPalette() {
     final hsl = HSLColor.fromColor(primaryColor);
 

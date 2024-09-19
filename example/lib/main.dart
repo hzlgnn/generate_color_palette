@@ -14,15 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize the color palette generator with the primary color
     final paletteGenerator = ColorPaletteService(primaryColor);
 
+    // Generate different color palettes
     final complementaryColor = paletteGenerator.getComplementaryColor();
     final analogColors = paletteGenerator.getAnalogColors();
     final monochromaticColors = paletteGenerator.getMonochromaticColors();
     final saturationPalette = paletteGenerator.generateSaturationPalette();
     final huePalette = paletteGenerator.generateHuePalette();
     final lightnessPalette = paletteGenerator.generateLightnessPalette();
-    final randomPalette = paletteGenerator.getRandomPalette(5);
+    // final randomPalette = paletteGenerator.getRandomPalette(5); // Uncomment if needed
 
     return MaterialApp(
       home: Scaffold(
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Display the primary color and its hex value
             Text('Primary Color: ${colorToHex(primaryColor)}',
                 style: const TextStyle(fontSize: 18)),
             Container(
@@ -39,12 +42,14 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            // Display the complementary color and its hex value
             Text('Complementary Color: ${colorToHex(complementaryColor)}',
                 style: const TextStyle(fontSize: 18)),
             Container(height: 50, color: complementaryColor),
             const SizedBox(
               height: 20,
             ),
+            // Display the analog colors and their hex values
             const Text('Analog Colors:', style: TextStyle(fontSize: 18)),
             Row(
               children: analogColors
@@ -58,6 +63,7 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            // Display the monochromatic colors and their hex values
             const Text('Monochromatic Colors:', style: TextStyle(fontSize: 18)),
             Row(
               children: monochromaticColors
@@ -71,6 +77,7 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            // Display the saturation palette and their hex values
             const Text('Saturation Palette:', style: TextStyle(fontSize: 18)),
             Row(
               children: saturationPalette
@@ -84,6 +91,7 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            // Display the hue palette and their hex values
             const Text('Hue Palette:', style: TextStyle(fontSize: 18)),
             Row(
               children: huePalette
@@ -97,6 +105,7 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            // Display the lightness palette and their hex values
             const Text('Lightness Palette:', style: TextStyle(fontSize: 18)),
             Row(
               children: lightnessPalette
@@ -107,7 +116,8 @@ class MyApp extends StatelessWidget {
                           child: Text(colorToHex(color)))))
                   .toList(),
             ),
-            /* const Text('Random Palette:', style: TextStyle(fontSize: 18)),
+            /* Uncomment if you want to display the random palette
+            const Text('Random Palette:', style: TextStyle(fontSize: 18)),
             Row(
               children: randomPalette
                   .map((color) => Expanded(
@@ -123,6 +133,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  // Converts a Color object to a hex string (e.g., #FF5733)
   String colorToHex(Color color) {
     return '#${color.value.toRadixString(16).substring(2).toUpperCase()}';
   }
